@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6" style="margin:auto;">
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i>HYDERABAD METROPOLITAN
+        WATER SUPPLY AND SEWERAGE BOARD <br>
+        Administrative Office Building
+        Khairatabad, Hyderabad – 4, Telangana State</p>
+    </div>
+    <div class="col-lg-6">
+      <p class="w3-center w3-large" style="margin-left: 15px;">Admin can login here</p>
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
+        <div>
+          <!-- <i class="fa fa-user" aria-hidden="true"></i>  -->
+          <input type="text" class="form-control" formControlName="admin_user" placeholder="NAME"
+            style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['admin_user'].valid && contactForm.controls['admin_user'].touched">{{ msgAlert }}</div>
+          <input type="password" class="form-control" formControlName="password" placeholder="PASSWORD"
+            style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['password'].valid && contactForm.controls['password'].touched">{{ msgAlert }}</div>
+        </div>
+        <div style="margin-top: 3%;margin-left: 3%">
+          <button type="submit" [disabled]="!contactForm.valid" class="btn btn-dark Green">Admin Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

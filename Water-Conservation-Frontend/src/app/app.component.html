@@ -1,0 +1,18 @@
+
+<div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
+    <app-sidebar></app-sidebar>
+  <main class="page-content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <a class="btn btn-secondary" (click)="toggleSidebar()"><i class="fa fa-bars"></i></a>
+                  <hr>
+                  <router-outlet></router-outlet>
+                  <hr>  
+                  <!-- <a class="btn btn-secondary" (click)="toggleBackgroundImage()">Toggle Background Image</a> -->
+              </div>
+          </div>
+      </div>
+      <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
+  </main>
+</div>

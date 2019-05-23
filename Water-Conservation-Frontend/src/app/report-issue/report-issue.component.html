@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6" style="margin:auto;">
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i>HYDERABAD METROPOLITAN
+        WATER SUPPLY AND SEWERAGE BOARD <br>
+        Administrative Office Building
+        Khairatabad, Hyderabad – 4, Telangana State</p>
+    </div>
+    <div class="col-lg-6">
+      <p class="w3-center w3-large" style="margin-left: 15px;">Lets get in touch. Send us a message:</p>
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
+        <div>
+          <!-- <i class="fa fa-user" aria-hidden="true"></i>  -->
+          <input type="text" class="form-control" formControlName="user_name" placeholder="NAME"
+            style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['user_name'].valid && contactForm.controls['user_name'].touched">{{ msgAlert }}</div>
+          <input type="text" class="form-control" formControlName="mobile_number" placeholder="Mobile Number"
+            style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['mobile_number'].valid && contactForm.controls['mobile_number'].touched">{{ msgAlert }}</div>
+            <input type="text" class="form-control" formControlName="issue" placeholder="Issue"
+            style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['issue'].valid && contactForm.controls['issue'].touched">{{ msgAlert }}</div>
+            <select class="form-control" formControlName="zone_id" (change) = "get_circles($event.target.value)" style="margin:15px; width: 75%">
+              <option value="" selected>Select Zone Id</option>
+              <option *ngFor="let z of zones" value="{{ z.zone_id }}">{{ z.zone_name }}</option>
+            </select>
+            <div class="error" *ngIf="!contactForm.controls['zone_id'].valid && contactForm.controls['zone_id'].touched">{{ msgAlert }}</div>
+            <select class="form-control" formControlName="circle_id" (change)="get_wards($event.target.value)" style="margin:15px; width: 75%">
+              <option value="" selected>Select Circle Id</option>
+              <option *ngFor="let c of circles" value="{{ c.circle_id }}">{{ c.circle_name }}</option>
+            </select>
+            <div class="error" *ngIf="!contactForm.controls['circle_id'].valid && contactForm.controls['circle_id'].touched">{{ msgAlert }}</div>
+            <select class="form-control" formControlName="ward_id" style="margin:15px; width: 75%">
+              <option value="" selected>Select Ward Id</option>
+              <option *ngFor="let w of wards" value="{{ w.ward_id }}">{{ w.ward_name }}</option>
+              <!-- <option *ngFor="let w of wards" value="{{ w.ward_id }}">{{ w..ward_name }}</option> -->
+            </select>
+            <div class="error" *ngIf="!contactForm.controls['ward_id'].valid && contactForm.controls['ward_id'].touched">{{ msgAlert }}</div>
+            <input type="file" formControlName="file_upload" style="margin:15px; width: 75%">
+            <div class="error" *ngIf="!contactForm.controls['file_upload'].valid && contactForm.controls['file_upload'].touched">{{ msgAlert }}</div>
+           
+           
+ 
+        </div>
+        <div style="margin-top: 3%;margin-left: 3%">
+          <button type="submit" [disabled]="!contactForm.valid" class="btn btn-dark Green">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

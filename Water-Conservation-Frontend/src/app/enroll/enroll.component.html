@@ -1,0 +1,107 @@
+<div class="container-fluid">
+<section>
+  <form [formGroup]="enrollForm" (ngSubmit)="submitForm(enrollForm.value)">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="first_name" placeholder="First name"
+            style="margin:15px; width: 75%">
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="last_name" placeholder="Last name"
+            style="margin-top: 13px; width: 75%">
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="mobile_number" placeholder="Number"
+            style="margin:15px; width: 75%">
+        </div>
+        <div class="col-md-6">
+            <p><strong>Gender:</strong></p>
+            <label>
+              <input type="radio" value="Male" formControlName="gender">
+              <span>Male</span>
+            </label>
+            <label>
+              <input type="radio" value="Female" formControlName="gender">
+              <span>Female</span>
+            </label>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
+              <input type="text" class="form-control" formControlName="email_id" placeholder="Email Id"
+              style="margin:15px; width: 75%">
+          </div>
+          <div class="col-md-6">
+              <textarea formControlName="address" placeholder="ADDRESS"
+              style="width: 75%; border-radius: 4px;"></textarea>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <input type="text" class="form-control" formControlName="occupation" placeholder="Occupation"
+              style="margin:15px; width: 75%">
+          </div>
+          <div class="col-md-6">
+              <textarea formControlName="organization" placeholder="Organization"
+              style="width: 75%; border-radius: 4px;"></textarea>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <p><strong>Volunteer hour per week (hours): </strong></p>
+              <label><input type="radio" value="0-2" formControlName="v_hour_per_week"><span>0-2</span></label> &nbsp;
+              <label><input type="radio" value="2-4" formControlName="v_hour_per_week"><span>2-4</span></label> &nbsp;
+              <label><input type="radio" value="4-6" formControlName="v_hour_per_week"><span>4-6</span></label> &nbsp;
+              <label><input type="radio" value="6-8" formControlName="v_hour_per_week"><span>6-8</span></label> &nbsp;
+              <label><input type="radio" value="8-12" formControlName="v_hour_per_week"><span>8-12</span></label> &nbsp;
+              <label><input type="radio" value="More than 12" formControlName="v_hour_per_week"><span>More than 12</span></label>
+          </div>
+          <div class="col-md-6">
+              <p><strong>Preferred days </strong></p>
+              <label><input type="radio" value="0-2" formControlName="preferred_days"><span>0-2</span></label> &nbsp;
+              <label><input type="radio" value="2-4" formControlName="preferred_days"><span>2-4</span></label> &nbsp;
+              <label><input type="radio" value="4-6" formControlName="preferred_days"><span>4-6</span></label> &nbsp;
+              <label><input type="radio" value="6-8" formControlName="preferred_days"><span>6-8</span></label> &nbsp;
+              <label><input type="radio" value="8-12" formControlName="preferred_days"><span>8-12</span></label> &nbsp;
+              <label><input type="radio" value="More than 12" formControlName="preferred_days"><span>More than 12</span></label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <select class="form-control" formControlName="zone" (change) = "get_circles($event.target.value)" style="margin:15px; width: 75%">
+                <option value="" selected>Select Zone Id</option>
+                <option *ngFor="let z of zones" value="{{ z.zone_id }}">{{ z.zone_name }}</option>
+              </select>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" formControlName="circle" (change)="get_wards($event.target.value)" style="margin:15px; width: 75%">
+                <option value="" selected>Select Circle Id</option>
+                <option *ngFor="let c of circles" value="{{ c.circle_id }}">{{ c.circle_name }}</option>
+              </select>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
+              <select class="form-control" formControlName="ward" style="margin:15px; width: 75%">
+              <option value="" selected>Select Ward Id</option>
+              <option *ngFor="let w of wards" value="{{ w.ward_id }}">{{ w.ward_name }}</option>
+              </select>
+
+          </div>
+          <div class="col-md-6">
+              <input type="text" class="form-control" formControlName="area_of_interest" placeholder="Area of interest"
+              style="margin:16px; width: 75%">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <button type="submit" [disabled]="!enrollForm.valid" class="btn btn-dark Green" style="margin:auto">Submit</button>
+        </div>
+      </div>
+  </form>
+</section>
+</div>

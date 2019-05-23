@@ -1,0 +1,44 @@
+<nav id="sidebar" class="sidebar" [ngClass]="{'sidebar-bg' : hasBackgroundImage()}">
+  <div class="sidebar-content">
+    <perfect-scrollbar>
+      <div class="sidebar-header">
+        <img class="img-responsive img-rounded" src="assets/img/waterlogo.jpg" width="220" alt="Water Logo">
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+            <strong>{{logged_user | uppercase}}</strong>
+          </span>
+          <span class="user-role">{{role}}</span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li *ngFor="let menu of menus" [ngClass]="{'active': menu.active , 'sidebar-dropdown':menu.type === 'dropdown' , 'header-menu':menu.type === 'header'}">
+            <span *ngIf="menu.type === 'header'">{{menu.title}}</span>
+            <a *ngIf="menu.type !== 'header'" [routerLink]="menu.title" (click)='toggle(menu)'>
+              <i class="{{menu.icon}}"></i>
+              <span>{{menu.title}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </perfect-scrollbar>
+  </div>
+  <div class="sidebar-footer">
+    <div>
+      <!-- <a href="#">
+        <i class="fa fa-cog"></i>
+      </a> -->
+    </div>
+    <div *ngIf="logged_user == 'admin'">
+      <a >
+        <i class="fa fa-power-off" (click)="logout()">logout</i>
+      </a>
+    </div>
+  </div>
+</nav>

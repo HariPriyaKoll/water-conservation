@@ -1,0 +1,102 @@
+<div style="display:block;"
+[style.width]="width">
+<slideshow #slideshow
+        [imageUrls]="imageUrls"
+        [height]="height"
+        [minHeight]="minHeight"
+        [arrowSize]="arrowSize"
+        [showArrows]="showArrows"
+        [disableSwiping]="disableSwiping"
+        [autoPlay]="autoPlay"
+        [stopAutoPlayOnSlide]="stopAutoPlayOnSlide"
+        [debug]="debug"
+        [backgroundSize]="backgroundSize"
+        [backgroundPosition]="backgroundPosition"
+        [backgroundRepeat]="backgroundRepeat"
+        [showDots]="showDots"
+        [dotColor]="dotColor"
+        [showCaptions]="showCaptions"
+        [captionColor]="captionColor"
+        [captionBackground]="captionBackground"
+        [lazyLoad]="lazyLoad"
+        [hideOnNoSlides]="hideOnNoSlides"
+        [fullscreen]="fullscreen">
+</slideshow>
+</div>
+
+<section *ngIf="logged_user == 'admin' ">
+        <div style="margin-top:60px">
+        <div class="row">
+                <div class="col-md-12">
+                        <h2>Volunteer List:</h2>
+                </div>
+        </div>
+        <div class="row">
+              <div class="col-1g-12 col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 10%">
+                                                <mfDefaultSorter by="name">First Name</mfDefaultSorter>
+                                            </th>
+                                            <th style="width: 10%">
+                                                <mfDefaultSorter by="email">Last Name</mfDefaultSorter>
+                                            </th>
+                                            <th style="width: 10%">
+                                                <mfDefaultSorter by="age">Mobile Number</mfDefaultSorter>
+                                            </th>
+                                            <th style="width: 10%">
+                                                <mfDefaultSorter by="city">Gender</mfDefaultSorter>
+                                            </th>
+                                            <th style="width: 10%">
+                                                        <mfDefaultSorter by="city">Email Id</mfDefaultSorter>
+                                                </th>
+                                                <th style="width: 10%">
+                                                      <mfDefaultSorter by="city">Address</mfDefaultSorter>
+                                                </th>
+                                                <th style="width: 10%">
+                                                        <mfDefaultSorter by="city">Occupation</mfDefaultSorter>
+                                                </th>
+                                                <th style="width: 10%">
+                                                        <mfDefaultSorter by="city">Organization</mfDefaultSorter>
+                                                </th>
+                                                
+                                                <th style="width: 10%">
+                                                        <mfDefaultSorter by="city">Hour per week</mfDefaultSorter>
+                                                </th>
+                                                <th style="width: 10%">
+                                                         <mfDefaultSorter by="city">Preferred days</mfDefaultSorter>
+                                                </th>
+                                                <th style="width: 10%">
+                                                        <mfDefaultSorter by="city">Area of Interest</mfDefaultSorter>
+                                                </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let user of mf.data">
+                                            <td>{{user.first_name}}</td>
+                                            <td>{{user.last_name}}</td>
+                                            <td>{{user.mobile_number}}</td>
+                                            <td>{{user.gender}}</td>
+                                            <td>{{user.email_id}}</td>
+                                            <td>{{user.address}}</td>
+                                            <td>{{user.occupation}}</td>
+                                            <td>{{user.organization}}</td>
+                                            <td>{{user.v_hour_per_week}}</td>
+                                            <td>{{user.preferred_days}}</td>
+                                            <td>{{user.area_of_interest}}</td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                      </table>
+                </div>  
+        </div>
+</div>
+</section>
+

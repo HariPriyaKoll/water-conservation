@@ -1,0 +1,10 @@
+{
+    "port": 3000,
+    "postgres": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "water_con",
+        "user": "postgres",
+        "password": "admin"
+    }
+}
